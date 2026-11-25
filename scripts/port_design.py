@@ -30,6 +30,24 @@ PAGES = {
     "Unboxed.dc.html": ("KivartKlicksPage", "/kivartklicks"),
 }
 
+# Small fixes to the design's logic where React behaves differently from the design runtime.
+PATCHES = {
+    "Main.dc.html": [
+        # The load curtain plays once per browser session. The design marked it as seen in the
+        # constructor, but React (Strict Mode) constructs a component twice, so the instance that
+        # mounts always found it already seen. Mark it seen only once the curtain has played.
+        (
+            "window.sessionStorage.setItem('kvIntro', '1'); return true;",
+            "return true;",
+        ),
+        (
+            "if (kvIntro) setTimeout(() => { try { this.setState({ intro: false }); } catch (e) {} }, 1800);",
+            "if (kvIntro) setTimeout(() => { try { window.sessionStorage.setItem('kvIntro', '1'); } catch (e) {} "
+            "try { this.setState({ intro: false }); } catch (e) {} }, 1800);",
+        ),
+    ],
+}
+
 EXT = {}
 for f in os.listdir(ASSETS):
     stem, ext = os.path.splitext(f)
@@ -306,6 +324,10 @@ def port(fname, comp):
         sys.exit(f"{fname}: unclosed tags {c.stack[-5:]}")
     jsx = "".join(c.out)
     script = script.replace("class Component extends DCLogic", f"class {comp} extends DCLogic")
+    for old, new in PATCHES.get(fname, []):
+        if old not in script:
+            sys.exit(f"{fname}: patch target not found: {old[:60]}")
+        script = script.replace(old, new)
     body = f"""// @ts-nocheck
 /* eslint-disable */
 // Ported from design/{fname} by scripts/port_design.py ("{title}").

@@ -282,9 +282,9 @@ function slModel(self, show) {
 }
 class HomePage extends DCLogic {
 constructor(p){ super(p); loadExtra(this);
-const kvIntro = (() => { try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; if (window.sessionStorage.getItem('kvIntro')) return false; window.sessionStorage.setItem('kvIntro', '1'); return true; } catch (e) { return true; } })();
+const kvIntro = (() => { try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; if (window.sessionStorage.getItem('kvIntro')) return false; return true; } catch (e) { return true; } })();
 this.heroBase = kvIntro ? '1.05s' : '0.15s';
-if (kvIntro) setTimeout(() => { try { this.setState({ intro: false }); } catch (e) {} }, 1800);
+if (kvIntro) setTimeout(() => { try { window.sessionStorage.setItem('kvIntro', '1'); } catch (e) {} try { this.setState({ intro: false }); } catch (e) {} }, 1800);
 setTimeout(() => { const t0 = Date.now(); const dur = 1600; const iv = setInterval(() => { const p = Math.min(1, (Date.now() - t0) / dur); try { this.setState({ cu: p }); } catch (e) {} if (p >= 1) clearInterval(iv); }, 50); }, kvIntro ? 1300 : 300);
 this.state = { intro: kvIntro, cu: 0, screen: 'home', kit: null, ckStep: 'form', ckPay: 'UPI', ckErr: false, ckOrderId: '', ck: { name: '', company: '', email: '', phone: '', address: '', pin: '', gst: '' }, f: emptyF(), short: [], book: 'photo', bkName: '', bkPhone: '', bkDate: '', bkPeople: '3–5', bkSlot: '11:00 AM', bkSamples: true, bkError: false }; }
 renderVals() {
