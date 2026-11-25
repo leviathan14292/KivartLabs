@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kivart — Bespoke Gifting</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E1B1D}a:hover{color:#C22B54}
+.kv-burger{display:inline-flex!important;order:3}.kv-mnav{display:flex!important}
+.kv-hdr{flex-wrap:nowrap!important}.kv-cta{order:2;margin-left:auto}.kv-burger{margin-left:auto}
+@media (min-width:901px){.kv-mnav{left:auto!important;width:340px;right:max(24px, calc((100% - 1280px) / 2 + 24px))!important;border-radius:0 0 20px 20px;border-left:1px solid #EBD5DB;border-right:1px solid #EBD5DB}.kv-mcta{display:none!important}}
+@media (max-width:900px){.kv-cta{display:none!important}.kv-burger{margin-left:auto}.kv-hdr{padding:10px 16px!important}}
+@media (max-width:600px){.kv-tag{display:none!important}}
+.kv-mnav{position:absolute;top:100%;left:0;right:0;z-index:40;visibility:hidden;clip-path:inset(0 0 100% 0);transition:clip-path .55s cubic-bezier(.4,0,.2,1) .3s,visibility 0s linear .85s}
+.kv-mnav.is-open{visibility:visible;clip-path:inset(0 0 -40px 0);transition:clip-path .6s cubic-bezier(.4,0,.2,1),visibility 0s}
+.kv-mnav>*{opacity:0;transform:translateY(-12px);transition:opacity .35s ease,transform .35s ease}
+.kv-mnav.is-open>*{opacity:1;transform:none}
+.kv-mnav.is-open>:nth-child(1){transition-delay:.12s}.kv-mnav.is-open>:nth-child(2){transition-delay:.2s}.kv-mnav.is-open>:nth-child(3){transition-delay:.28s}.kv-mnav.is-open>:nth-child(4){transition-delay:.36s}.kv-mnav.is-open>:nth-child(5){transition-delay:.44s}.kv-mnav.is-open>:nth-child(6){transition-delay:.52s}
+.kv-mnav>:nth-child(6){transition-delay:0s}.kv-mnav>:nth-child(5){transition-delay:.05s}.kv-mnav>:nth-child(4){transition-delay:.1s}.kv-mnav>:nth-child(3){transition-delay:.15s}.kv-mnav>:nth-child(2){transition-delay:.2s}.kv-mnav>:nth-child(1){transition-delay:.25s}
+@media (prefers-reduced-motion: reduce){.kv-mnav,.kv-mnav>*{transition:none!important}}
+/* footer (shared with Home) */
+.kv-fh{font-size:12px;font-weight:700;letter-spacing:0.16em;color:#FFFFFF;margin-bottom:4px}
+.kv-flink{transition:color .2s ease}.kv-flink:hover,.kv-flink:focus-visible{color:#F4C6D3!important}
+@media (max-width:900px){.kv-fgrid{grid-template-columns:1fr 1fr!important}.kv-fgrid>div:first-child{grid-column:1/-1}}
+@media (max-width:600px){.kv-fgrid{gap:28px 16px!important;padding:36px 20px 24px!important}.kv-fcta>div{padding:32px 20px!important}.kv-fcta h2{font-size:24px!important}.kv-fbar{padding:16px 20px!important}}
+.kv-soc{transition:background-color .2s ease,border-color .2s ease}.kv-soc:hover,.kv-soc:focus-visible{background-color:#C22B54;border-color:#C22B54!important;color:#FFFFFF!important}
+@media (max-width:600px){.kv-mfull{width:100%!important;align-self:stretch!important}}
+/* title + how it works */
+.kb-flow{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex:0 1 auto}
+.kb-flow li{display:flex;align-items:center;gap:10px}
+.kb-flow li strong{display:block;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap}
+.kb-flow li em{display:block;font-style:normal;font-size:12px;color:#6B5A60;white-space:nowrap}
+.kb-n{width:34px;height:34px;border-radius:999px;background:#C22B54;color:#FFFFFF;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:0 0 0 4px #F6E6EB}
+.kb-sep{width:34px;height:2px;background:#E3C9D0}
+/* brief + moodboard */
+.kb-main{display:block}
+.kb-agrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 40px}
+.kb-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.kb-agrid{grid-template-columns:1fr}.kb-three{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.kb-three{grid-template-columns:1fr}}
+.kb-board{position:sticky;top:90px}
+.kb-in{font:inherit;font-size:15px;padding:0 14px;height:46px;border:1px solid #E3C9D0;border-radius:12px;width:100%;box-sizing:border-box;background:#FFFFFF;color:#1E1B1D}
+.kb-in:focus{outline:2px solid #C22B54;outline-offset:1px;border-color:#C22B54}
+textarea.kb-in{height:auto;padding:12px 14px;resize:vertical;line-height:1.5}
+.kb-lbl{font-size:14px;font-weight:600;display:block;margin-bottom:6px}
+.kb-chip{font:inherit;font-size:13px;padding:7px 14px;min-height:38px;border-radius:999px;border:1px solid #E3C9D0;background:#FFFFFF;color:#1E1B1D;cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.kb-chip.is-on{background:#C22B54;border-color:#C22B54;color:#FFFFFF}
+.kb-ez{background:#C22B54;color:#FFFFFF;border-radius:28px;padding:36px;display:flex;flex-wrap:wrap;gap:28px 40px;align-items:center}
+.kb-ezchip{font-size:12px;font-weight:600;background:#A8214A;color:#FFFFFF;padding:6px 12px;border-radius:999px}
+.kb-ezform{flex:1 1 460px;min-width:0;background:#FFFFFF;color:#1E1B1D;border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.kb-ezgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+@media (max-width:600px){.kb-ez{padding:22px 18px;border-radius:22px}.kb-ezgrid{grid-template-columns:1fr}.kb-ez h2{font-size:26px!important}}
+.kb-bhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.kb-tabs{display:flex;gap:6px;background:#F6E6EB;border-radius:999px;padding:4px;flex:0 0 auto;width:340px;max-width:100%;box-sizing:border-box}
+.kb-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding-top:20px;border-top:1px solid #F1E3E7}
+.kb-btns{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+.kb-btn{font:inherit;font-size:15px;font-weight:700;height:50px;padding:0 28px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.kb-primary{border:none;background:#C22B54;color:#FFFFFF}.kb-primary:hover{background:#A8214A}
+.kb-ghost{border:1.5px solid #C22B54;background:#FFFFFF;color:#C22B54;font-weight:600;padding:0 22px}
+.kb-inperson{font-size:14px;color:#6B5A60;text-decoration:none;line-height:1.4}
+.kb-inperson span{color:#C22B54;font-weight:600;text-decoration:underline;white-space:nowrap}
+@media (max-width:900px){.kb-tabs{width:100%}}
+@media (max-width:600px){.kb-actions{flex-direction:column-reverse;align-items:stretch}.kb-btns{margin-left:0}.kb-btn{flex:1 1 auto;padding:0 16px}.kb-inperson{text-align:center}}
+.kb-tab{flex:1;font:inherit;font-size:13px;font-weight:600;border:none;border-radius:999px;padding:9px 12px;background:transparent;color:#6B5A60;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.kb-tab.is-on{background:#FFFFFF;color:#C22B54;box-shadow:0 2px 8px rgba(30,27,29,0.08)}
+.kb-tab i{font-style:normal;width:20px;height:20px;border-radius:999px;background:currentColor;display:inline-flex;align-items:center;justify-content:center}
+.kb-tab i b{color:#FFFFFF;font-size:11px}
+@keyframes kbIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kb-anim{animation:kbIn .4s ease}
+.kb-sw{display:flex;flex-direction:column;gap:6px;min-width:0}
+.kb-sw span:first-child{height:54px;border-radius:12px;border:1px solid rgba(30,27,29,0.08);transition:background .4s ease}
+.kb-sw em{font-style:normal;font-size:11px;color:#6B5A60;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kb-box{position:relative;width:150px;height:118px;flex:0 0 auto}
+.kb-lid{position:absolute;left:0;right:0;top:0;height:40px;border-radius:6px 6px 2px 2px;box-shadow:0 6px 14px rgba(30,27,29,0.18);transition:background .4s ease}
+.kb-base{position:absolute;left:8px;right:8px;top:36px;bottom:0;border-radius:2px 2px 6px 6px;transition:background .4s ease}
+.kb-sleeve{position:absolute;left:44px;width:30px;top:0;bottom:0;transition:background .4s ease}
+.kb-logo{position:absolute;left:0;right:0;top:12px;text-align:center;font-size:9px;font-weight:800;letter-spacing:0.18em;color:#FFFFFF;opacity:.9}
+.kb-cp{display:inline-flex;align-items:center;gap:10px;border:1px solid #E3C9D0;border-radius:14px;padding:6px 12px 6px 6px;cursor:pointer;background:#FFFFFF}
+.kb-cp input{width:38px;height:38px;border:none;padding:0;background:none;cursor:pointer;border-radius:10px}
+.kb-cp strong{display:block;font-size:13px;font-weight:600;line-height:1.2}.kb-cp em{display:block;font-style:normal;font-size:11px;color:#6B5A60;font-family:ui-monospace,monospace}
+.kb-kit{background:#FFFFFF;border:1px solid #EBD5DB;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.kb-kit .ph{display:flex;gap:2px;height:92px;background:#EED7DD}
+.kb-kit .ph img{flex:1 1 0;min-width:0;height:100%;object-fit:cover;display:block}
+.kb-work{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.kb-work>a{scroll-snap-align:start;text-decoration:none;color:#1E1B1D;display:flex;flex-direction:column;gap:8px}
+.kb-work img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;display:block;transition:transform .4s ease}
+.kb-work>a:hover img{transform:scale(1.03)}
+.kb-work .fr{border-radius:18px;overflow:hidden;position:relative}
+.kb-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.kb-opt{background:#FFFFFF;border:1px solid #EBD5DB;border-radius:20px;padding:20px;display:flex;gap:14px;align-items:flex-start}
+.kb-ico{width:46px;height:46px;border-radius:14px;background:#FBEFF2;color:#C22B54;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.kb-kits{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.kb-mob{display:none}
+@media (max-width:1100px){.kb-main{grid-template-columns:1fr}.kb-board{position:static}.kb-kits{grid-template-columns:repeat(3,minmax(0,1fr))}.kb-mob{display:block}}
+@media (max-width:900px){.kb-flow{flex:1 1 100%}.kb-sep{flex:1 1 16px;width:auto}.kb-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){
+h2{font-size:24px!important;line-height:1.15!important}
+.kb-h1{font-size:34px!important;line-height:1.05!important}
+.kb-flow{flex-direction:column;align-items:flex-start;gap:6px}.kb-sep{width:2px!important;height:12px;flex:none!important;margin-left:16px}
+.kb-pad{padding:20px!important;border-radius:22px!important}
+.kb-opts{grid-template-columns:1fr}.kb-kits{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kb-kitrow{grid-template-columns:1fr!important}
+.kb-swrow{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.kb-two{grid-template-columns:1fr!important}
+[style*="border-radius: 999px"][style*="padding: 14px"]{font-size:14px!important;padding:11px 18px!important}
+}
+@media (prefers-reduced-motion: reduce){.kb-anim{animation:none!important}}
+</style>
+</helmet>
+<div style="font-family: Poppins, system-ui, sans-serif; color: #1E1B1D; background: #FBF4F6; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #EBD5DB; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 12px rgba(30,27,29,0.06); color: #1E1B1D">
+<div class="kv-hdr" style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; gap: 16px; align-items: center">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="/_blob/a83bf40e44e99b4dbe7762f8dff58a41" alt="Kivart" style="height: 30px; width: auto"><span class="kv-tag" style="font-size: 11px; letter-spacing: 0.22em; color: #6B5A60; font-weight: 500; border-left: 1px solid #EBD5DB; padding-left: 12px">CORPORATE &amp; WEDDING GIFTING</span></a>
+<button type="button" class="kv-burger" onClick="{{toggleMenu}}" aria-label="{{menuLabel}}" aria-expanded="{{menuOpen}}" style="font: inherit; width: 44px; height: 44px; border-radius: 12px; border: 1px solid #EBD5DB; background: #FFFFFF; color: #1E1B1D; cursor: pointer; align-items: center; justify-content: center; padding: 0">
+<sc-if value="{{menuShut}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="#1E1B1D" stroke-width="2" stroke-linecap="round" fill="none"></path></svg></sc-if>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#C22B54" stroke-width="2" stroke-linecap="round" fill="none"></path></svg></sc-if>
+</button>
+</div>
+<nav class="kv-mnav {{menuCls}}" aria-label="Main menu" style="flex-direction: column; border-top: 1px solid #EBD5DB; border-bottom: 1px solid #EBD5DB; padding: 8px 16px 18px; font-size: 16px; font-weight: 500; background: #FFFFFF; box-shadow: 0 18px 30px rgba(30,27,29,0.14)">
+<a href="Shop.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">Shop</a>
+<a href="ShubhAarambh.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">Shubh Aarambh</a>
+<a href="Bespoke.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #C22B54; font-weight: 600">Bespoke Gifting</a>
+<a href="Partner.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">KataLogKraft</a>
+<a href="Unboxed.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">KivartKlicks</a>
+</nav>
+</header>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 44px 24px 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 22px 40px">
+<div style="flex: 1 1 520px; min-width: 0">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #C22B54">MADE FOR YOUR BRAND, FROM SCRATCH</span>
+<h1 class="kb-h1" style="margin: 8px 0 10px; font-size: 52px; line-height: 1; font-weight: 800; text-transform: uppercase">Bespoke <span style="color: #C22B54">Gifting</span></h1>
+<p style="margin: 0; max-width: 640px; font-size: 17px; line-height: 1.6; color: #3D3438">Custom kits, packaging and branding built around your occasion, your audience and your budget. Share a quick brief and we send a moodboard in 48 hours.</p>
+</div>
+<ol class="kb-flow" aria-label="How bespoke gifting works">
+<li><span class="kb-n">1</span><span><strong>Share a brief</strong><em>Budget, quantity, audience</em></span></li>
+<li class="kb-sep" aria-hidden="true"></li>
+<li><span class="kb-n">2</span><span><strong>Moodboard</strong><em>In 48 hours</em></span></li>
+<li class="kb-sep" aria-hidden="true"></li>
+<li><span class="kb-n">3</span><span><strong>Sample &amp; deliver</strong><em>Branded, pan-India</em></span></li>
+</ol>
+</div>
+</section>
+
+<section id="brief" style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 0; scroll-margin-top: 80px">
+<div class="kb-main">
+
+<!-- BRIEF -->
+<div class="kb-pad" style="background: #FFFFFF; border: 1px solid #EBD5DB; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
+<div class="kb-bhead">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<span style="align-self: flex-start; background: #C22B54; color: #FFFFFF; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; padding: 6px 12px; border-radius: 999px">BESPOKE BRIEF</span>
+<h2 style="margin: 4px 0 0; font-size: 28px; line-height: 1.1; font-weight: 800; text-transform: uppercase">Tell us the basics. <span style="color: #C22B54">We build the moodboard.</span></h2>
+</div>
+<div class="kb-tabs" role="tablist" aria-label="Brief steps">
+<button type="button" role="tab" class="kb-tab {{tabA}}" aria-selected="{{selA}}" onClick="{{toA}}"><i><b>1</b></i>Your gift</button>
+<button type="button" role="tab" class="kb-tab {{tabB}}" aria-selected="{{selB}}" onClick="{{toB}}"><i><b>2</b></i>Your details</button>
+</div>
+</div>
+
+<sc-if value="{{isA}}" hint-placeholder-val="{{true}}">
+<div class="kb-anim" style="display: flex; flex-direction: column; gap: 22px">
+<div class="kb-agrid">
+<div style="display: flex; flex-direction: column; gap: 18px; min-width: 0">
+<div>
+<label for="bprice" class="kb-lbl" style="display: flex; justify-content: space-between; gap: 10px"><span>Budget per gift</span><span style="color: #C22B54; font-weight: 800; font-size: 18px">{{budgetFmt}}</span></label>
+<input id="bprice" type="range" min="500" max="25000" step="500" value="{{budget}}" onChange="{{setBudget}}" style="width: 100%; min-height: 32px; accent-color: #C22B54">
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #6B5A60"><span>₹500</span><span>₹25,000+</span></div>
+</div>
+<div class="kb-two" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px">
+<div><label for="bqty" class="kb-lbl">Number of gifts</label><input id="bqty" class="kb-in" type="number" min="25" step="25" value="{{qty}}" onChange="{{setQty}}"></div>
+<div><label for="bdate" class="kb-lbl">Needed by</label><input id="bdate" class="kb-in" type="date" min="{{today}}" value="{{date}}" onChange="{{setDate}}"></div>
+</div>
+<div><span class="kb-lbl">Your brand colours <span style="font-weight: 400; color: #6B5A60">Optional</span></span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<label class="kb-cp"><input type="color" value="{{c1}}" onChange="{{setC1}}" aria-label="Primary brand colour"><span><strong>Primary</strong><em>{{c1Up}}</em></span></label>
+<label class="kb-cp"><input type="color" value="{{c2}}" onChange="{{setC2}}" aria-label="Secondary brand colour"><span><strong>Secondary</strong><em>{{c2Up}}</em></span></label>
+<sc-if value="{{useBrand}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{resetColours}}" style="font: inherit; font-size: 13px; background: none; border: none; padding: 4px 0; color: #C22B54; text-decoration: underline; cursor: pointer">Use suggested colours</button></sc-if>
+</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 18px; min-width: 0">
+<div><span class="kb-lbl">Who is it for? <span style="font-weight: 400; color: #6B5A60">Pick any</span></span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{auds}}" as="a" hint-placeholder-count="5"><button type="button" class="kb-chip {{a.cls}}" aria-pressed="{{a.pressed}}" onClick="{{a.pick}}">{{a.label}}</button></sc-for></div></div>
+<div><span class="kb-lbl">Occasion <span style="font-weight: 400; color: #6B5A60">Pick any</span></span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{occs}}" as="o" hint-placeholder-count="6"><button type="button" class="kb-chip {{o.cls}}" aria-pressed="{{o.pressed}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div></div>
+<div><span class="kb-lbl">Branding <span style="font-weight: 400; color: #6B5A60">Optional</span></span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{brands}}" as="b" hint-placeholder-count="6"><button type="button" class="kb-chip {{b.cls}}" aria-pressed="{{b.pressed}}" onClick="{{b.pick}}">{{b.label}}</button></sc-for></div></div>
+</div>
+</div>
+<div><label for="bnotes" class="kb-lbl">Brand colours, theme or anything else</label><textarea id="bnotes" class="kb-in" rows="3" value="{{notes}}" onChange="{{setNotes}}" placeholder="e.g. Launching our new tyre range on 12 Jan; dealers in 40 cities; navy and yellow"></textarea></div>
+<div class="kb-actions">
+<div class="kb-btns"><button type="button" class="kb-btn kb-primary" onClick="{{toB}}">Next: your details →</button></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isB}}" hint-placeholder-val="{{false}}">
+<div class="kb-anim" style="display: flex; flex-direction: column; gap: 14px">
+<div class="kb-three">
+<div><label for="bname" class="kb-lbl">Full name</label><input id="bname" class="kb-in" type="text" value="{{f.name}}" onChange="{{on.name}}" autocomplete="name"></div>
+<div><label for="bco" class="kb-lbl">Company</label><input id="bco" class="kb-in" type="text" value="{{f.company}}" onChange="{{on.company}}" autocomplete="organization"></div>
+<div><label for="bemail" class="kb-lbl">Work email</label><input id="bemail" class="kb-in" type="email" value="{{f.email}}" onChange="{{on.email}}" placeholder="you@company.com" autocomplete="email"></div>
+<div><label for="bphone" class="kb-lbl">Phone</label><input id="bphone" class="kb-in" type="tel" value="{{f.phone}}" onChange="{{on.phone}}" placeholder="+91" autocomplete="tel"></div>
+<div><label for="bcity" class="kb-lbl">Delivery city</label><input id="bcity" class="kb-in" type="text" value="{{f.city}}" onChange="{{on.city}}"></div>
+<div><label for="bcall" class="kb-lbl">Best time to call</label><select id="bcall" class="kb-in" value="{{f.call}}" onChange="{{on.call}}"><option value="Any time">Any time</option><option value="Morning (10–1)">Morning (10–1)</option><option value="Afternoon (1–4)">Afternoon (1–4)</option><option value="Evening (4–7)">Evening (4–7)</option></select></div>
+</div>
+<div style="background: #FBF4F6; border-radius: 14px; padding: 12px 14px; font-size: 13px; color: #3D3438; line-height: 1.55"><strong>Your brief:</strong> {{briefLine}} <button type="button" onClick="{{toA}}" style="font: inherit; font-size: 13px; background: none; border: none; padding: 0; color: #C22B54; text-decoration: underline; cursor: pointer">Edit</button></div>
+<sc-if value="{{err}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #B3261E">Add your name, a work email and a 10-digit phone number so we can send your moodboard.</span></sc-if>
+<div class="kb-actions">
+<div class="kb-btns"><button type="button" class="kb-btn kb-ghost" onClick="{{toA}}">← Back</button><button type="button" class="kb-btn kb-primary" onClick="{{submit}}">Send brief · moodboard in 48 hrs</button></div>
+</div>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+<div class="kb-anim" style="display: flex; flex-direction: column; gap: 12px; padding: 8px 0">
+<span style="width: 56px; height: 56px; border-radius: 999px; background: #E6F2EA; color: #1E5E36; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="#1E5E36" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg></span>
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; color: #1E5E36">BRIEF RECEIVED · {{ref}}</span>
+<span style="font-size: 26px; font-weight: 800; text-transform: uppercase; line-height: 1.1">Thank you, {{firstName}}. Your moodboard is on its way.</span>
+<span style="font-size: 15px; line-height: 1.6; color: #3D3438">{{doneLine}}</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px">
+<a href="#visit" onClick="{{toVisit}}" style="background: #C22B54; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 14px 22px; border-radius: 999px">Book an Experience Zone visit</a>
+<button type="button" onClick="{{restart}}" style="font: inherit; font-weight: 600; padding: 13px 22px; border-radius: 999px; border: 1.5px solid #C22B54; background: #FFFFFF; color: #C22B54; cursor: pointer">Start another brief</button>
+</div>
+</div>
+</sc-if>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE ZONE -->
+<section id="visit" style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 0; scroll-margin-top: 80px">
+<div class="kb-ez">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span style="align-self: flex-start; background: #FFFFFF; color: #C22B54; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; padding: 6px 12px; border-radius: 999px">KIVART EXPERIENCE ZONE</span>
+<h2 style="margin: 0; font-size: 34px; line-height: 1.08; font-weight: 800; text-transform: uppercase; color: #FFFFFF">Prefer to build it in person?</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 300; max-width: 520px">Walk the full product wall, try branding on the spot and build your kit with our team. Leave with samples and a costed proposal.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span class="kb-ezchip">Live product wall</span><span class="kb-ezchip">Branding studio</span><span class="kb-ezchip">Build your box</span>
+</div>
+<span style="font-size: 13px; font-weight: 300; color: #F9DCE4">Rohini, Delhi · Mon–Sat, 10 AM–7 PM</span>
+</div>
+<div class="kb-ezform">
+<sc-if value="{{bkOpen}}" hint-placeholder-val="{{true}}">
+<span style="font-weight: 800; font-size: 17px; text-transform: uppercase; color: #C22B54">Book a walkthrough</span>
+<div class="kb-ezgrid">
+<div><label for="vzname" class="kb-lbl">Name and company</label><input id="vzname" class="kb-in" type="text" value="{{bk.name}}" onChange="{{onBk.name}}" placeholder="Priya Mehta, JK Tyre"></div>
+<div><label for="vzphone" class="kb-lbl">Phone or WhatsApp</label><input id="vzphone" class="kb-in" type="tel" value="{{bk.phone}}" onChange="{{onBk.phone}}" placeholder="+91"></div>
+<div><label for="vzdate" class="kb-lbl">Date</label><input id="vzdate" class="kb-in" type="date" min="{{today}}" value="{{bk.date}}" onChange="{{onBk.date}}"></div>
+<div><span class="kb-lbl">Time slot</span><div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{slots}}" as="t" hint-placeholder-count="4"><button type="button" class="kb-chip {{t.cls}}" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}" style="padding: 6px 12px; min-height: 36px; font-size: 12px">{{t.label}}</button></sc-for></div></div>
+</div>
+<sc-if value="{{bkErr}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #B3261E">Add your name, a 10-digit phone number and a date so we can confirm.</span></sc-if>
+<button type="button" class="kb-btn kb-primary" onClick="{{submitBk}}" style="width: 100%">Request a slot</button>
+</sc-if>
+<sc-if value="{{bkDone}}" hint-placeholder-val="{{false}}">
+<span style="font-size: 12px; font-weight: 800; letter-spacing: 0.14em; color: #1E5E36">REQUEST RECEIVED</span>
+<span style="font-weight: 800; font-size: 20px; text-transform: uppercase; line-height: 1.15">See you at the Experience Zone</span>
+<span style="font-size: 14px; line-height: 1.6; color: #3D3438">{{bkSummary}}. Our team will call or WhatsApp you within 2 working hours to confirm.</span>
+<button type="button" class="kb-btn kb-ghost" onClick="{{bkReset}}" style="align-self: flex-start">Book another slot</button>
+</sc-if>
+</div>
+</div>
+</section>
+
+<!-- RECENT WORK -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 64px 24px 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 18px">
+<div><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #C22B54">PROOF, NOT PROMISES</span><h2 style="margin: 6px 0 0; font-size: 36px; font-weight: 800; text-transform: uppercase; line-height: 1.05">Recent bespoke work</h2></div>
+<a href="Unboxed.dc.html" style="font-weight: 600; color: #C22B54">See all on KivartKlicks →</a>
+</div>
+<div class="kb-work">
+<sc-for list="{{work}}" as="w" hint-placeholder-count="6">
+<a href="Unboxed.dc.html" aria-label="{{w.title}} on KivartKlicks">
+<div class="fr"><img src="{{w.img}}" alt="" loading="lazy"><sc-if value="{{w.isVideo}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="position: absolute; top: 10px; right: 10px; width: 30px; height: 30px; border-radius: 999px; background: rgba(255,255,255,0.3); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; padding-left: 2px; box-sizing: border-box"><svg width="10" height="12" viewBox="0 0 10 12"><path d="M1 1 L9 6 L1 11 Z" fill="#C22B54"></path></svg></span></sc-if></div>
+<span style="font-weight: 700; font-size: 15px; line-height: 1.3">{{w.title}}</span>
+<span style="font-size: 12px; color: #6B5A60">{{w.tag}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<!-- BRANDING OPTIONS -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 64px 24px 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 18px">
+<div><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #C22B54">MAKE IT YOURS</span><h2 style="margin: 6px 0 0; font-size: 36px; font-weight: 800; text-transform: uppercase; line-height: 1.05">Branding options</h2></div>
+<span style="font-size: 14px; color: #6B5A60">Indicative lead times, confirmed in your proposal.</span>
+</div>
+<div class="kb-opts">
+<sc-for list="{{opts}}" as="o" hint-placeholder-count="6">
+<div class="kb-opt">
+<span class="kb-ico" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{o.icon}}"></path></svg></span>
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0"><span style="font-weight: 700; font-size: 16px">{{o.title}}</span><span style="font-size: 13px; color: #3D3438; line-height: 1.5">{{o.desc}}</span><span style="align-self: flex-start; margin-top: 4px; font-size: 11px; font-weight: 600; background: #F6E6EB; color: #A8214A; padding: 3px 9px; border-radius: 999px">{{o.lead}}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- READY-MADE KITS -->
+<section style="max-width: 1280px; margin: 0 auto; padding: 64px 24px 72px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 18px">
+<div><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #C22B54">SHORT ON TIME?</span><h2 style="margin: 6px 0 0; font-size: 36px; font-weight: 800; text-transform: uppercase; line-height: 1.05">Start from a ready-made kit</h2></div>
+<span style="font-size: 14px; color: #6B5A60; max-width: 420px">Pick one as your starting point. We swap items, add your branding and repack it in your colours.</span>
+</div>
+<div class="kb-kits">
+<sc-for list="{{boxes}}" as="b" hint-placeholder-count="5">
+<div style="background: #FFFFFF; border: 1px solid #EBD5DB; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column">
+<img src="{{b.img}}" alt="{{b.name}} gift box" style="width: 100%; aspect-ratio: 480 / 553; object-fit: cover; display: block">
+<div style="padding: 14px; display: flex; flex-direction: column; gap: 4px; flex: 1">
+<span style="font-weight: 800; font-size: 16px; text-transform: uppercase">{{b.name}}</span>
+<sc-for list="{{b.feats}}" as="f" hint-placeholder-count="3"><span style="font-size: 12px; color: #3D3438; font-weight: 300">· {{f}}</span></sc-for>
+<div style="margin-top: auto; padding-top: 8px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 18px; font-weight: 800; color: #C22B54">₹{{b.dealFmt}}</span><span style="font-size: 12px; color: #6B5A60; text-decoration: line-through">MRP ₹{{b.mrpFmt}}</span></div>
+<button type="button" onClick="{{b.use}}" style="font: inherit; margin-top: 8px; width: 100%; min-height: 42px; border-radius: 999px; border: 1.5px solid #C22B54; background: #FFFFFF; color: #C22B54; font-weight: 600; font-size: 13px; cursor: pointer">Use as my starting point</button>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<footer class="kv-foot" style="background: #1E1B1D; color: #CFC3C7; font-size: 14px; overflow: hidden; margin-top: 0">
+<div class="kv-fcta" style="background: #C22B54; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 44px 24px; display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; justify-content: space-between">
+<div style="flex: 1 1 520px; min-width: 0"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: #F4C6D3">READY WHEN YOU ARE</span>
+<h2 style="margin: 8px 0 0; font-size: clamp(26px, 3.4vw, 44px); line-height: 1.05; font-weight: 800; text-transform: uppercase; color: #FFFFFF">Let’s plan your next gifting moment.</h2></div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<a class="kv-mfull" href="#brief" onClick="{{toBrief}}" style="background: #FFFFFF; color: #C22B54; text-decoration: none; font-weight: 700; padding: 14px 24px; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box">Start your brief</a>
+<a class="kv-mfull" href="#visit" onClick="{{toVisit}}" style="background: transparent; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 14px 24px; border-radius: 999px; border: 1.5px solid #FFFFFF; white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box">Book an Experience Zone visit</a>
+</div>
+</div>
+</div>
+<div class="kv-fgrid" style="max-width: 1280px; margin: 0 auto; padding: 52px 24px 32px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 14px; min-width: 0"><img src="/_blob/a83bf40e44e99b4dbe7762f8dff58a41" alt="Kivart" style="height: 30px; width: auto; align-self: flex-start"><span style="line-height: 1.6; max-width: 300px">Made in India, for the world. Crafted gifts, homegrown tech and the brands you love, all from one partner.</span>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px"><span style="color: #FFFFFF; font-weight: 600; font-size: 13px">Follow us · @kivartlabs</span>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a href="https://www.instagram.com/kivartlabs" target="_blank" rel="noopener" aria-label="Kivart on Instagram" class="kv-soc" style="width: 42px; height: 42px; border-radius: 999px; border: 1px solid #4A4246; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"></circle></svg></a>
+<a href="https://www.facebook.com/kivartlabs/" target="_blank" rel="noopener" aria-label="Kivart on Facebook" class="kv-soc" style="width: 42px; height: 42px; border-radius: 999px; border: 1px solid #4A4246; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v3.5H8V21h3.5v-7.5h3l.6-3.5h-3.6V7.8c0-.5.4-.8.8-.8H15z"></path></svg></a>
+<a href="https://www.youtube.com/@kivartlabs" target="_blank" rel="noopener" aria-label="Kivart on YouTube" class="kv-soc" style="width: 42px; height: 42px; border-radius: 999px; border: 1px solid #4A4246; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="4"></rect><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"></path></svg></a>
+<a href="https://www.linkedin.com/company/kivartlabs/" target="_blank" rel="noopener" aria-label="Kivart on LinkedIn" class="kv-soc" style="width: 42px; height: 42px; border-radius: 999px; border: 1px solid #4A4246; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-6M11.5 13a2.5 2.5 0 0 1 5 0v3.5"></path></svg></a>
+</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0"><span class="kv-fh">SHOP</span>
+<a class="kv-flink" href="Shop.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Tech &amp; Electronics</a>
+<a class="kv-flink" href="Shop.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Drinkware</a>
+<a class="kv-flink" href="Shop.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Home &amp; Lifestyle</a>
+<a class="kv-flink" href="Shop.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Gift Hampers</a>
+<a class="kv-flink" href="Shop.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Gift Cards</a>
+<a class="kv-flink" href="ShubhAarambh.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Shubh Aarambh weddings</a>
+<a class="kv-flink" href="Main.dc.html#sample-kits" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Sample kits</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0"><span class="kv-fh">COMPANY</span>
+<a class="kv-flink" href="Bespoke.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Bespoke Gifting</a>
+<a class="kv-flink" href="Main.dc.html#experience" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">Experience Zone</a>
+<a class="kv-flink" href="Partner.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">KataLogKraft for partners</a>
+<a class="kv-flink" href="Unboxed.dc.html" style="color: #CFC3C7; text-decoration: none; padding: 2px 0">KivartKlicks</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; min-width: 0"><span class="kv-fh">CONTACT</span>
+<span style="line-height: 1.55">Plot 10, Sector 23, Block C1, Rohini, Delhi 110042</span>
+<a class="kv-flink" href="tel:+919209700003" style="color: #CFC3C7; text-decoration: none">+91 92097 00003</a>
+<a class="kv-flink" href="mailto:connect@kivartlabs.com" style="color: #CFC3C7; text-decoration: none">connect@kivartlabs.com</a>
+<span style="font-size: 13px; color: #9C8F94">Mon–Sat, 10 AM–7 PM</span>
+</div>
+</div>
+<div class="kv-fbar" style="max-width: 1280px; margin: 0 auto; padding: 18px 24px; border-top: 1px solid #3D3438; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: 13px; color: #9C8F94; box-sizing: border-box"><span>© 2026 Kivart Labs. All rights reserved.</span><span style="display: flex; gap: 18px; flex-wrap: wrap"><a class="kv-flink" href="https://kivartlabs.com/policies/privacy-policy" target="_blank" rel="noopener" style="color: #9C8F94; text-decoration: none">Privacy &amp; Cookies</a><a class="kv-flink" href="https://kivartlabs.com/policies/terms-of-service" target="_blank" rel="noopener" style="color: #9C8F94; text-decoration: none">Terms &amp; Conditions</a><a class="kv-flink" href="https://kivartlabs.com/pages/shipping-policy" target="_blank" rel="noopener" style="color: #9C8F94; text-decoration: none">Shipping Policy</a><a class="kv-flink" href="https://kivartlabs.com/policies/refund-policy" target="_blank" rel="noopener" style="color: #9C8F94; text-decoration: none">Return &amp; Refund</a></span></div>
+<div aria-hidden="true" style="max-width: 1280px; margin: 12px auto 0; padding: 0 24px; box-sizing: border-box; line-height: 0"><img src="/_blob/6189322c7ee5cc7b1b5c65bd6f2508ca" alt="" style="width: 100%; height: auto; display: block; margin-bottom: -2%; user-select: none"></div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+const ALL = [{"code": "KV-001", "name": "Magsafe 10", "cat": "Powerbanks", "brand": "Kivart", "mrp": 3999, "img": "/_blob/f64b46581fa347beae9489901414e313", "feats": ["Display LED Indicator", "1 USB A Port. 1 Type-C", "Power 22.5W"], "colors": 4, "desc": "", "carton": 50, "stock": 5200, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition"]}, {"code": "KV-002", "name": "Pebble", "cat": "Powerbanks", "brand": "Kivart", "mrp": 3999, "img": "/_blob/ca1eaeff11ad01a1b4f6a91ebe521990", "feats": ["Dual Output", "1 USB A Port. 1 Type-C", "Power 22.5W"], "colors": 2, "desc": "", "carton": 50, "stock": 4800, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits", "Rewards & recognition"]}, {"code": "KV-003", "name": "PowerX 20K", "cat": "Powerbanks", "brand": "Kivart", "mrp": 3499, "img": "/_blob/340e40e580ffb424d750522e705f7aab", "feats": ["Display LED Indicator", "1 USB A Port. 1 Type-C", "Power 22.5W"], "colors": 2, "desc": "", "carton": 50, "stock": 6100, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits", "Rewards & recognition"]}, {"code": "KV-004", "name": "PowerX 10K", "cat": "Powerbanks", "brand": "Kivart", "mrp": 3499, "img": "/_blob/e51e2a489dac4c974e391bcc70ec72fe", "feats": ["LED Indicator", "1 USB A Port. 1 Type-C", "Power 22.5W"], "colors": 2, "desc": "", "carton": 50, "stock": 5000, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits", "Rewards & recognition"]}, {"code": "KV-005", "name": "Surge", "cat": "Powerbanks", "brand": "Kivart", "mrp": 2999, "img": "/_blob/a05a2d12ffcc138268627e4da7ddf058", "feats": ["LED Indicator", "1 USB A Port. 1 Type-C", "Power 22.5W"], "colors": 4, "desc": "", "carton": 50, "stock": 4400, "aud": ["Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits"]}, {"code": "KV-006", "name": "Voltmax", "cat": "Powerbanks", "brand": "Kivart", "mrp": 2499, "img": "/_blob/f22c271393de1103e00f3ae8588e0793", "feats": ["LED Indicator", "1 USB A Port. 1 Type-C", "Power 12W"], "colors": 1, "desc": "", "carton": 50, "stock": 5600, "aud": ["Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Onboarding kits"]}, {"code": "KV-007", "name": "Play Plus", "cat": "TWS Earbuds", "brand": "Kivart", "mrp": 5999, "img": "/_blob/9b6cd9aae3206064e44a2f1d232b5fc9", "feats": ["Quad Mic Built-in", "ENC Technology", "IPX6 Rated"], "colors": 1, "desc": "", "carton": 50, "stock": 3900, "aud": ["Clients & CXOs", "Dealers & channel"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition"]}, {"code": "KV-008", "name": "Thrive", "cat": "TWS Earbuds", "brand": "Kivart", "mrp": 4999, "img": "/_blob/790787f8cbc3ba5b89df9691fcb42c1a", "feats": ["Quad Mic Built-in", "ENC Technology", "IPX6 Rated"], "colors": 2, "desc": "", "carton": 50, "stock": 5300, "aud": ["Clients & CXOs", "Dealers & channel", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition"]}, {"code": "KV-009", "name": "Spark", "cat": "TWS Earbuds", "brand": "Kivart", "mrp": 4799, "img": "/_blob/0b6cc62816981aacac9d1a385634dbca", "feats": ["Quad Mic Built-in", "ENC Technology", "IPX6 Rated"], "colors": 1, "desc": "", "carton": 50, "stock": 5200, "aud": ["Clients & CXOs", "Dealers & channel", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition"]}, {"code": "KV-010", "name": "Strike", "cat": "TWS Earbuds", "brand": "Kivart", "mrp": 3999, "img": "/_blob/4faa1a02e4d3e9a2d2a367b779d5de5b", "feats": ["Quad Mic Built-in", "ENC Technology", "IPX6 Rated"], "colors": 1, "desc": "", "carton": 50, "stock": 4800, "aud": ["Clients & CXOs", "Dealers & channel", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition"]}, {"code": "KV-011", "name": "Vibro", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/084ac5d13e6a925492d4e48794b35e6d", "feats": ["v5.3 Bluetooth", "60 Hours of Music Playtime", "10mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 6100, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-012", "name": "Classo", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/5bff4c8c1159ecc8ee71489470f271a7", "feats": ["v5.3 Bluetooth", "60 Hours of Music Playtime", "10mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 5000, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-013", "name": "Wave", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/1bb9616278e7fb7ca419d2873f788811", "feats": ["v5.4 Bluetooth", "60 Hours of Music Playtime", "10mm Graphene Drivers"], "colors": 4, "desc": "", "carton": 100, "stock": 4400, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-014", "name": "Elite", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/9bf033274efa2ac50e0e1cf5b3ce321b", "feats": ["v5.4 Bluetooth", "40 Hours of Music Playtime", "12mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 5600, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-015", "name": "Jazz", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/f8bec55673f9e421d8a8188ed97077f5", "feats": ["v5.3 Bluetooth", "60 Hours of Music Playtime", "12mm Graphene Drivers"], "colors": 2, "desc": "", "carton": 100, "stock": 3900, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-016", "name": "Flair", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/a49a2c5647f08231725bd26abdcd4031", "feats": ["v5.3 Bluetooth", "45 Hours of Music Playtime", "12mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 5300, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-017", "name": "Drift", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/34d85ab023af4681d928fd3736cbd385", "feats": ["v5.4 Bluetooth", "40 Hours of Music Playtime", "12mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 5200, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-018", "name": "Neo", "cat": "Neckbands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/e41f3427d152fc0f876d4edccbd2ed5b", "feats": ["v5.3 Bluetooth", "40 Hours of Music Playtime", "11mm Graphene Drivers"], "colors": 1, "desc": "", "carton": 100, "stock": 4800, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-019", "name": "Sync", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 2499, "img": "/_blob/f43e935f8fd733eab761652d4596efde", "feats": ["Wireless Bluetooth Connectivity", "Portable & Compact Design", "Convenient Carry Strap"], "colors": 2, "desc": "", "carton": 20, "stock": 6100, "aud": ["Dealers & channel", "Employees"], "occ": ["Dealer meets", "Diwali & festive"]}, {"code": "KV-020", "name": "Vibe+", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 1999, "img": "/_blob/9c318c35370a991c6c9d2cc8e3fdd8ba", "feats": ["Wireless Bluetooth Connectivity", "Portable & Compact Design", "Convenient Carry Strap"], "colors": 1, "desc": "", "carton": 20, "stock": 5000, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive"]}, {"code": "KV-021", "name": "Chime", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 1999, "img": "/_blob/36205ca98a7b157e32ce0c31a6f0ec3b", "feats": ["Wireless Bluetooth Connectivity", "Portable & Compact Design", "Convenient Carry Strap"], "colors": 1, "desc": "", "carton": 20, "stock": 4400, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive"]}, {"code": "KV-022", "name": "Reverb", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 1999, "img": "/_blob/deece97b824c9e21aa5e6617416644b1", "feats": ["Wireless Bluetooth Connectivity", "Portable & Compact Design", "Convenient Carry Strap"], "colors": 1, "desc": "", "carton": 20, "stock": 5600, "aud": ["Dealers & channel", "Employees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive"]}, {"code": "KV-023", "name": "GlowUp+", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 3999, "img": "/_blob/fee2081e2aa0a7b0c7f3c368b6602210", "feats": ["Immersive RGB Ambient Lighting", "Dual Full-Range Drivers", "Deep Bass Performance"], "colors": 1, "desc": "", "carton": 20, "stock": 3900, "aud": ["Clients & CXOs", "Dealers & channel", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-024", "name": "SB 180", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 11999, "img": "/_blob/d39e090f1f2381e19f9e68ac5d047b51", "feats": ["180W Powerful Sound Output", "Wired 100W Subwoofer", "Multiple Connectivity Options"], "colors": 1, "desc": "", "carton": 2, "stock": 600, "aud": ["Clients & CXOs", "Dealers & channel"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-025", "name": "Phantom", "cat": "Speakers & Soundbars", "brand": "Kivart", "mrp": 17999, "img": "/_blob/9b1a6f647eebf5e6662dba7fe99cd194", "feats": ["Dual Bass Drivers", "Dynamic LED Ring Lighting", "Portable Party Speaker Design"], "colors": 4, "desc": "", "carton": 2, "stock": 600, "aud": ["Clients & CXOs", "Dealers & channel"], "occ": ["Dealer meets", "Diwali & festive", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-026", "name": "Ether+", "cat": "Data Cables", "brand": "Kivart", "mrp": 2999, "img": "/_blob/96274b0495f88076157a9341e5cc789d", "feats": ["65W PD Output", "Tangle Free Wires", "Quad Design"], "colors": 1, "desc": "", "carton": 100, "stock": 4800, "aud": ["Employees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-027", "name": "Ether", "cat": "Data Cables", "brand": "Kivart", "mrp": 2499, "img": "/_blob/4c65e5553c94da1d472f57550005ee47", "feats": ["65W PD Output", "Tangle Free Wires", "Quad Design"], "colors": 1, "desc": "", "carton": 100, "stock": 6100, "aud": ["Employees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-028", "name": "Nexus A-to-C", "cat": "Data Cables", "brand": "Kivart", "mrp": 1999, "img": "/_blob/738315d2e315d8a52d36cc79a635367e", "feats": ["65W PD Output", "Tangle Free Wires", "10k Insertion Tested"], "colors": 1, "desc": "", "carton": 100, "stock": 5000, "aud": ["Employees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-029", "name": "Nexus A-to-L", "cat": "Data Cables", "brand": "Kivart", "mrp": 1999, "img": "/_blob/2cfbf19f097a988c0bd238d827981e54", "feats": ["65W PD Output", "Tangle Free Wires", "10k Insertion Tested"], "colors": 1, "desc": "", "carton": 100, "stock": 4400, "aud": ["Employees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-030", "name": "Wave C", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 1499, "img": "/_blob/99229a4b482a5389ed9065dd4e11fd1d", "feats": ["USB-C Connector", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 1, "desc": "", "carton": 200, "stock": 5600, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-031", "name": "Verve", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 999, "img": "/_blob/531bd8fcd1d306c78c359b851bd0397b", "feats": ["3.5mm Universal Audio Jack", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 2, "desc": "", "carton": 200, "stock": 3900, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-032", "name": "Blaze", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 599, "img": "/_blob/0e53c55ece362710a48a136ed56c8699", "feats": ["3.5mm Universal Audio Jack", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 1, "desc": "", "carton": 200, "stock": 5300, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-033", "name": "Zenith", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 499, "img": "/_blob/716eb1d486b45c2a4c333fb6203a3779", "feats": ["3.5mm Universal Audio Jack", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 1, "desc": "", "carton": 200, "stock": 5200, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-034", "name": "Hello", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 499, "img": "/_blob/1ef6fc4c521040610610f8856b22fd6d", "feats": ["3.5mm Universal Audio Jack", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 4, "desc": "", "carton": 200, "stock": 4800, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-035", "name": "Harmony", "cat": "Wired Earphones", "brand": "Kivart", "mrp": 499, "img": "/_blob/358212e90642363b3a2b5b66665fb3c3", "feats": ["3.5mm Universal Audio Jack", "In-Line Microphone", "Ergonomic In-Ear Design"], "colors": 1, "desc": "", "carton": 200, "stock": 6100, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-036", "name": "Carvolt", "cat": "Chargers", "brand": "Kivart", "mrp": 1499, "img": "/_blob/1878128b634cbac0febf70a8077a4421", "feats": ["51W Power", "Compact Design", "Dual Port Design"], "colors": 1, "desc": "", "carton": 100, "stock": 5000, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos"]}, {"code": "KV-037", "name": "M5 Flexi Fit", "cat": "Mobile Stands", "brand": "Kivart", "mrp": 1499, "img": "/_blob/c0703696baf4967c56dfac4f539126e7", "feats": ["Adjustable Height & Angle", "Foldable & Portable Design", "Sturdy Metal Build"], "colors": 1, "desc": "", "carton": 40, "stock": 4400, "aud": ["Doctors & pharma", "Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-038", "name": "M4 Flexi Fit", "cat": "Mobile Stands", "brand": "Kivart", "mrp": 999, "img": "/_blob/53758ab12c7c3dc302146917c71c07af", "feats": ["Adjustable Height & Angle", "Foldable & Portable Design", "Sturdy Metal Build"], "colors": 1, "desc": "", "carton": 40, "stock": 5600, "aud": ["Doctors & pharma", "Employees", "Event attendees", "Interns & students"], "occ": ["Conferences & expos", "Onboarding kits"]}, {"code": "KV-039", "name": "Elevate Pro", "cat": "Laptop Stands", "brand": "Kivart", "mrp": 2999, "img": "/_blob/8ba1012db781076714d6eb6530cfffc5", "feats": ["Multi-Angle Adjustability", "Sturdy & Stable Build", "Improved Airflow & Cooling"], "colors": 1, "desc": "", "carton": 20, "stock": 3900, "aud": ["Doctors & pharma", "Employees"], "occ": ["Onboarding kits"]}, {"code": "KV-040", "name": "Elevate", "cat": "Laptop Stands", "brand": "Kivart", "mrp": 2499, "img": "/_blob/de1430c511f93763ce5ca8430bf7ceba", "feats": ["Multi-Angle Adjustability", "Sturdy & Stable Build", "Improved Airflow & Cooling"], "colors": 1, "desc": "", "carton": 20, "stock": 5300, "aud": ["Doctors & pharma", "Employees"], "occ": ["Onboarding kits"]}, {"code": "KV-041", "name": "Matrix", "cat": "Extension Boards", "brand": "Kivart", "mrp": 1499, "img": "/_blob/90ab314d445a076696a81a69b0e06ab9", "feats": ["Multiple Power Outlets", "Sturdy & Durable Casing", "Individual Switch Control"], "colors": 1, "desc": "", "carton": 30, "stock": 5200, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Onboarding kits"]}, {"code": "KV-042", "name": "Circuit", "cat": "Extension Boards", "brand": "Kivart", "mrp": 1499, "img": "/_blob/83b1a2a961f8744040b5d5ef9deca1d4", "feats": ["Multiple Power Outlets", "Sturdy & Durable Casing", "Individual Switch Control"], "colors": 1, "desc": "", "carton": 30, "stock": 4800, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Onboarding kits"]}, {"code": "KV-043", "name": "Hub", "cat": "Extension Boards", "brand": "Kivart", "mrp": 1499, "img": "/_blob/8cb435f1001d5994f351ccfec01410f3", "feats": ["Multiple Power Outlets", "Sturdy & Durable Casing", "Individual Switch Control"], "colors": 1, "desc": "", "carton": 30, "stock": 6100, "aud": ["Employees", "Event attendees", "Interns & students"], "occ": ["Onboarding kits"]}, {"code": "KV-044", "name": "Rainbow Kettle", "cat": "Home Appliances", "brand": "Kivart", "mrp": 1799, "img": "/_blob/9aeb35af301bb028ad497d9ed11d6e8a", "feats": ["Double-Wall Insulated Body", "Cordless Design", "Fast Boiling Technology"], "colors": 4, "desc": "", "carton": 12, "stock": 5000, "aud": ["Dealers & channel", "Doctors & pharma", "Employees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-045", "name": "Basic Kettle", "cat": "Home Appliances", "brand": "Kivart", "mrp": 1499, "img": "/_blob/c721037d4558a1729961e1cdbff422e2", "feats": ["Stainless Steel Body", "Cordless Design", "Fast Boiling Technology"], "colors": 1, "desc": "", "carton": 12, "stock": 4400, "aud": ["Dealers & channel", "Doctors & pharma", "Employees", "Event attendees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-046", "name": "Tiffin Pro", "cat": "Home Appliances", "brand": "Kivart", "mrp": 3999, "img": "/_blob/8cf672df12a0605d4a01f2d0353cd682", "feats": ["Electric Heating Function", "Multi-Layer Compartments", "Sturdy Carry Handle"], "colors": 1, "desc": "", "carton": 12, "stock": 5600, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-047", "name": "Tiffin", "cat": "Home Appliances", "brand": "Kivart", "mrp": 2999, "img": "/_blob/71476a8c06692a591bbc5b022364b248", "feats": ["Electric Heating Function", "Multi-Layer Compartments", "Sturdy Carry Handle"], "colors": 1, "desc": "", "carton": 12, "stock": 3900, "aud": ["Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-048", "name": "Infra", "cat": "Home Appliances", "brand": "Kivart", "mrp": 4999, "img": "/_blob/c80b516654a76411c4b603bafe14bfea", "feats": ["Touch Control Panel", "Multiple Cooking Presets", "Safety Features"], "colors": 1, "desc": "", "carton": 12, "stock": 5300, "aud": ["Clients & CXOs", "Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-049", "name": "Ignite", "cat": "Home Appliances", "brand": "Kivart", "mrp": 2999, "img": "/_blob/605b7424c2284629049603d9f59b08ed", "feats": ["Touch Control Panel", "Multiple Cooking Presets", "Adjustable Power Settings"], "colors": 1, "desc": "", "carton": 12, "stock": 5200, "aud": ["Dealers & channel", "Doctors & pharma", "Employees"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-050", "name": "Glide", "cat": "Home Appliances", "brand": "Kivart", "mrp": 999, "img": "/_blob/b8f170d8be017d2229ae59d72fe4967e", "feats": ["Non-Stick Soleplate", "Fast Heating", "Adjustable Temperature Control"], "colors": 1, "desc": "", "carton": 12, "stock": 4800, "aud": ["Dealers & channel", "Doctors & pharma", "Employees", "Event attendees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-051", "name": "Flux", "cat": "Home Appliances", "brand": "Kivart", "mrp": 999, "img": "/_blob/82fe77b13d0aef15185bd3f71dc44f1b", "feats": ["Non-Stick Soleplate", "Fast Heating", "Adjustable Temperature Control"], "colors": 1, "desc": "", "carton": 12, "stock": 6100, "aud": ["Dealers & channel", "Doctors & pharma", "Employees", "Event attendees", "Interns & students"], "occ": ["Dealer meets", "Diwali & festive", "Wedding gifting"]}, {"code": "KV-052", "name": "Executive Edge", "cat": "Gift Boxes (BYOB)", "brand": "Kivart", "mrp": 12299, "img": "/_blob/2badbb20c2d8bff0300936e6cffa6ae2", "feats": ["Elevate Laptop Stand", "Pebble Powerbank", "Play+ TWS Earbuds", "In a Premium Gift Box"], "colors": null, "desc": "A complete everyday kit combining power, wireless audio, meal convenience, and ergonomic support for a seamless work routine.", "carton": 10, "stock": 600, "aud": ["Clients & CXOs", "Doctors & pharma"], "occ": ["Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-053", "name": "Smartdesk", "cat": "Gift Boxes (BYOB)", "brand": "Kivart", "mrp": 11799, "img": "/_blob/3f30a6a6f44c7cdcb29b015e66ce8f1b", "feats": ["Elevate Laptop Stand", "M4 Mobile Stand", "PowerX Powerbank", "Thrive TWS Earbuds"], "colors": null, "desc": "A premium tech kit featuring a laptop stand, mobile stand, TWS, and power bank, designed for seamless connectivity, comfort, and all-day power.", "carton": 10, "stock": 600, "aud": ["Clients & CXOs", "Doctors & pharma"], "occ": ["Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-054", "name": "Fusion", "cat": "Gift Boxes (BYOB)", "brand": "Kivart", "mrp": 7299, "img": "/_blob/28a846223ea8de55fbbfa6558570fb75", "feats": ["Elevate Laptop Stand", "M4 Mobile Stand", "Pebble Powerbank", "In a Premium Gift Box"], "colors": null, "desc": "Elevate your everyday workspace with a thoughtfully curated kit designed for comfort, productivity, and uninterrupted power. A perfect companion for professionals who work anywhere.", "carton": 10, "stock": 5600, "aud": ["Clients & CXOs", "Doctors & pharma"], "occ": ["Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-055", "name": "Pulse", "cat": "Gift Boxes (BYOB)", "brand": "Kivart", "mrp": 8799, "img": "/_blob/b5090cb05f19a5d90d85c02003d9cc16", "feats": ["Vibe+ Speaker", "Thrive TWS Earbuds", "M4 Mobile Stand", "In a Premium Gift Box"], "colors": null, "desc": "Keep the energy flowing with immersive audio and hands-free convenience. Whether it’s work calls, music, or content on the go, Pulse Kit is designed for every moment.", "carton": 10, "stock": 3900, "aud": ["Clients & CXOs", "Doctors & pharma"], "occ": ["Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "KV-056", "name": "Connect", "cat": "Gift Boxes (BYOB)", "brand": "Kivart", "mrp": 8299, "img": "/_blob/ac0a7f9d000780c361b817160cd7b598", "feats": ["Elevate Laptop Stand", "Flair Neckband", "M4 Mobile Stand", "Chime Speaker"], "colors": null, "desc": "Stay connected, productive, and entertained with a versatile combination of ergonomic workspace essentials and premium audio accessories. Ideal for hybrid work and travel.", "carton": 10, "stock": 5300, "aud": ["Clients & CXOs", "Doctors & pharma"], "occ": ["Diwali & festive", "Onboarding kits", "Product launch", "Rewards & recognition", "Wedding gifting"]}, {"code": "FE-01", "name": "Forest Essentials Gift Box (curated)", "cat": "Personal Care", "brand": "Forest Essentials", "mrp": null, "img": "", "feats": ["Sourced through Kivart", "Single PO and invoice"], "colors": null, "desc": "", "carton": 12, "stock": null, "aud": ["Clients & CXOs", "Employees"], "occ": ["Wedding gifting", "Diwali & festive"]}, {"code": "KT-01", "name": "Kent Kitchen Appliance (on request)", "cat": "Home Appliances", "brand": "Kent", "mrp": null, "img": "", "feats": ["Sourced through Kivart", "Single PO and invoice"], "colors": null, "desc": "", "carton": 6, "stock": null, "aud": ["Dealers & channel", "Employees"], "occ": ["Wedding gifting", "Dealer meets", "Diwali & festive"]}, {"code": "PH-01", "name": "Philips Grooming (on request)", "cat": "Personal Care", "brand": "Philips", "mrp": null, "img": "", "feats": ["Sourced through Kivart", "Single PO and invoice"], "colors": null, "desc": "", "carton": 10, "stock": null, "aud": ["Employees", "Dealers & channel"], "occ": ["Rewards & recognition", "Diwali & festive"]}, {"code": "PG-01", "name": "Pigeon Cookware Set (on request)", "cat": "Home Appliances", "brand": "Pigeon", "mrp": null, "img": "", "feats": ["Sourced through Kivart", "Single PO and invoice"], "colors": null, "desc": "", "carton": 6, "stock": null, "aud": ["Dealers & channel", "Employees"], "occ": ["Wedding gifting", "Dealer meets"]}];
+
+// Corporate price used across the site: deal ≈ 65% of MRP (dummy until real price lists are connected).
+const deal = (mrp) => Math.round(mrp * 0.65 / 10) * 10 - 1;
+const POOL = ALL.filter(x => x.brand === 'Kivart' && x.cat !== 'Gift Boxes (BYOB)' && x.mrp >= 999).map(x => Object.assign({}, x, { deal: deal(x.mrp) })).sort((a, b) => b.deal - a.deal);
+const BOXES = ALL.filter(x => x.cat === 'Gift Boxes (BYOB)');
+const AUDS = ['Employees', 'Clients & CXOs', 'Dealers & channel', 'Doctors & pharma', 'Event attendees'];
+const OCCS = ['Diwali & festive', 'Wedding gifting', 'Dealer meets', 'Product launch', 'Onboarding kits', 'Rewards & recognition'];
+const BRANDING = ['Laser engraving', 'UV print', 'Custom sleeve', 'Message card', 'Foil & deboss', 'Name personalisation'];
+const PALETTES = {
+  'Diwali & festive': ['Festive glow', [['#5E1029', 'Maroon'], ['#D9822B', 'Marigold'], ['#F7EFE4', 'Ivory'], ['#C22B54', 'Rani pink']]],
+  'Wedding gifting': ['Shaadi blush', [['#C22B54', 'Rani pink'], ['#F4C6D3', 'Blush'], ['#0F6B5C', 'Emerald'], ['#F7EFE4', 'Ivory']]],
+  'Dealer meets': ['Boardroom', [['#1F3A5F', 'Navy'], ['#8A9BB0', 'Steel'], ['#F4F5F7', 'Mist'], ['#C22B54', 'Accent']]],
+  'Product launch': ['Launch night', [['#1E1B1D', 'Charcoal'], ['#2F6FED', 'Electric'], ['#D9DCE1', 'Silver'], ['#C22B54', 'Accent']]],
+  'Onboarding kits': ['Fresh start', [['#0F6B5C', 'Teal'], ['#CFE8DC', 'Mint'], ['#EFE6D8', 'Sand'], ['#1E1B1D', 'Charcoal']]],
+  'Rewards & recognition': ['Hall of fame', [['#1B1F3B', 'Midnight'], ['#E8D9B5', 'Champagne'], ['#5E1029', 'Plum'], ['#FFFFFF', 'White']]]
+};
+const OPTS = [
+  ['Laser engraving', 'Crisp, permanent logos on metal, wood and powerbanks.', '+2 days', 'M4 20l6-6M14 4l6 6-8 8-6-6zM16 2v3M21 8h-3'],
+  ['UV & pad printing', 'Full-colour logos on tech, drinkware and diaries.', '+2 days', 'M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6z'],
+  ['Custom sleeves & boxes', 'Your colours and artwork on kraft or rigid boxes.', '+5 to 7 days', 'M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8'],
+  ['Message cards', 'A personal note, or a QR code to a video or landing page.', '+1 day', 'M4 4h16v16H4zM4 9h16M8 14h8M8 17h5'],
+  ['Foil & deboss', 'Premium finishes on leatherette, diaries and lids.', '+4 days', 'M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 7L12 17.8 5.8 21.1 7 14.1 2 9.2l7.1-.9z'],
+  ['Name personalisation', 'Individual names for every employee or guest.', '+3 days', 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z']
+];
+const WORK = [
+  ['2badbb20c2d8bff0300936e6cffa6ae2', 'Executive Edge kits, packed for a client', 'Client kit · Custom box', false],
+  ['7a9b5f66dccf1b5e7349931349fb913b', 'Diwali box, ready to ship', 'Festive · Branded sleeve', true],
+  ['88e230622743f66a912f274f3cae7d4c', 'POV: a customised gift box', 'Unboxing · Personalised', true],
+  ['d5f66c42f56328a7cf6e3c47a0389a94', 'Employee joining kit', 'Onboarding · Name cards', true],
+  ['3f30a6a6f44c7cdcb29b015e66ce8f1b', 'Smartdesk kit, branded and boxed', 'Client kit · Laser logo', false],
+  ['ec56ecb7c50ad4c992458d8cdee7c761', 'Christmas & New Year box', 'Festive · Custom box', true],
+  ['e425c69ccd978bafe75d26fe6bc586ee', 'Travellers kit', 'Rewards · Curated', true],
+  ['7fc48850e1a60f65c936865003bd1fbb', 'The signature Kivart box', 'Packaging · Rigid box', true]
+];
+function packFor(b) {
+  if (b < 1500) return ['Kraft mailer with printed sleeve', 'Eco-friendly, light to ship pan-India.', 'kraft mailer'];
+  if (b < 5000) return ['Rigid box with branded sleeve', 'Your colours on the sleeve, logo on the lid.', 'rigid box with sleeve'];
+  if (b < 12000) return ['Magnetic rigid box, foil logo', 'Soft-touch finish with a foil-stamped logo.', 'magnetic box with foil logo'];
+  return ['Premium leatherette box, debossed', 'Keepsake box with a debossed logo and satin lining.', 'premium keepsake box'];
+}
+function build(target, auds, occs, skip) {
+  const fits = POOL.filter(p => (!auds.length && !occs.length) || auds.some(a => p.aud.includes(a)) || occs.some(o => p.occ.includes(o)));
+  const src = fits.length ? fits : POOL;
+  // Aim for 3 items around a third of the budget each, so kits feel curated rather than one big item.
+  const aim = target / 3;
+  const ranked = src.slice().sort((a, b) => Math.abs(a.deal - aim) - Math.abs(b.deal - aim));
+  const pool = ranked.slice(skip).concat(ranked.slice(0, skip));
+  let total = 0; const picked = []; const cats = {};
+  for (const p of pool) { if (picked.length < 4 && !cats[p.cat] && total + p.deal <= target) { picked.push(p); cats[p.cat] = 1; total += p.deal; } }
+  if (!picked.length) { const c = POOL[POOL.length - 1]; picked.push(c); total += c.deal; }
+  return { picked, total };
+}
+function kbRgb(hex) { const h = String(hex || '#000000').replace('#', ''); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16) || 0); }
+function kbDark(hex) { const [r, g, b] = kbRgb(hex); return (0.299 * r + 0.587 * g + 0.114 * b) / 255 < 0.6; }
+function kbTint(hex, t) { const c = kbRgb(hex).map(v => Math.round(v + (255 - v) * t)); return '#' + c.map(v => v.toString(16).padStart(2, '0')).join(''); }
+const pad2 = (n) => String(n).padStart(2, '0');
+function todayStr() { const d = new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+function menuVals(self) { const m = !!self.state.menu; return { menuOpen: m, menuShut: !m, menuCls: m ? 'is-open' : '', menuLabel: m ? 'Close menu' : 'Open menu', toggleMenu: () => self.setState({ menu: !m }) }; }
+function scrollToBrief() { try { const el = document.getElementById('brief'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }
+
+class Component extends DCLogic {
+constructor(p) { super(p); this.state = { budget: 3000, qty: 250, date: '', auds: ['Dealers & channel'], occs: ['Dealer meets'], brands: ['Laser engraving'], bk: { name: '', phone: '', date: '', slot: '11:00 AM' }, bkErr: false, bkDone: false, notes: '', c1: '#1F3A5F', c2: '#C22B54', useBrand: false, step: 'A', f: { name: '', company: '', email: '', phone: '', city: '', call: 'Any time' }, err: false, done: false, ref: '' }; }
+renderVals() {
+  const s = this.state;
+  const fmt = (n) => Math.round(n).toLocaleString('en-IN');
+  const multi = (list, key) => list.map(l => { const on = s[key].includes(l); return { label: l, cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false', pick: () => this.setState({ [key]: on ? s[key].filter(v => v !== l) : s[key].concat([l]) }) }; });
+  const q = Math.max(0, Number(s.qty) || 0);
+  const sug = PALETTES[s.occs[0]] || ['Kivart classic', [['#C22B54', 'Kivart pink'], ['#5E1029', 'Maroon'], ['#F6E6EB', 'Blush'], ['#1E1B1D', 'Charcoal']]];
+  // Your own brand colours win over the occasion suggestion.
+  const pal = s.useBrand ? ['Your brand colours', [[s.c1, 'Primary'], [s.c2, 'Secondary'], [kbTint(s.c1, 0.86), 'Light tint'], [kbDark(s.c1) ? '#FFFFFF' : '#1E1B1D', kbDark(s.c1) ? 'White' : 'Charcoal']]] : sug;
+  const pk = packFor(s.budget);
+  const tiers = [['UNDER BUDGET', 0.75, 'Smart Essentials', 4], ['ON BUDGET', 1.0, 'Signature Kit', 1], ['STRETCH', 1.3, 'Premium Edit', 0]];
+  const kits = tiers.map(t => { const b = build(s.budget * t[1], s.auds, s.occs, t[3]); return { tier: t[0], title: t[2], items: b.picked.map(p => p.name + ' · ' + p.cat), imgs: b.picked.map(p => p.img), perFmt: fmt(b.total), orderFmt: fmt(b.total * q) }; });
+  const onF = (k) => (e) => this.setState({ f: Object.assign({}, s.f, { [k]: e.target.value }), err: false });
+  const dateTxt = s.date ? new Date(s.date + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+  const briefLine = fmt(q) + ' gifts at ₹' + fmt(s.budget) + ' each' + (s.useBrand ? ' · brand colours ' + s.c1.toUpperCase() + ' / ' + s.c2.toUpperCase() : '') + (s.auds.length ? ' for ' + s.auds.join(', ') : '') + (s.occs.length ? ' · ' + s.occs.join(', ') : '') + (dateTxt ? ' · needed by ' + dateTxt : '') + (s.brands.length ? ' · ' + s.brands.join(', ') : '');
+  return {
+    ...menuVals(this),
+    notDone: !s.done, done: s.done, isA: s.step === 'A', isB: s.step === 'B',
+    tabA: s.step === 'A' ? 'is-on' : '', tabB: s.step === 'B' ? 'is-on' : '', selA: s.step === 'A' ? 'true' : 'false', selB: s.step === 'B' ? 'true' : 'false',
+    toA: () => this.setState({ step: 'A' }), toB: () => this.setState({ step: 'B' }),
+    budget: s.budget, budgetFmt: '₹' + fmt(s.budget) + (s.budget >= 25000 ? '+' : ''), qty: s.qty, qtyFmt: fmt(q) + ' gifts', date: s.date, today: todayStr(), notes: s.notes,
+    setBudget: (e) => this.setState({ budget: Number(e.target.value) }),
+    setQty: (e) => this.setState({ qty: Number(e.target.value) }),
+    setDate: (e) => this.setState({ date: e.target.value }),
+    setNotes: (e) => this.setState({ notes: e.target.value }),
+    auds: multi(AUDS, 'auds'), occs: multi(OCCS, 'occs'), brands: multi(BRANDING, 'brands'),
+    f: s.f, on: { name: onF('name'), company: onF('company'), email: onF('email'), phone: onF('phone'), city: onF('city'), call: onF('call') },
+    err: s.err, briefLine,
+    submit: () => {
+      const f = s.f; const ph = String(f.phone).replace(/\D/g, '').slice(-10);
+      if (!f.name.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.trim()) || ph.length !== 10) { this.setState({ err: true }); return; }
+      this.setState({ done: true, err: false, ref: 'KB-' + String(Date.now() % 100000).padStart(5, '0') }); scrollToBrief();
+    },
+    ref: s.ref, firstName: (s.f.name.trim().split(' ')[0] || 'there'),
+    doneLine: 'We have your brief for ' + briefLine + '. Our team will email ' + (s.f.email || 'you') + ' a moodboard within 48 hours and call you on ' + (s.f.phone || 'your number') + ' (' + s.f.call.toLowerCase() + ') to walk you through it.',
+    restart: () => this.setState({ done: false, step: 'A', ref: '' }),
+    // moodboard
+    summary: fmt(q) + ' gifts · ₹' + fmt(s.budget) + ' each' + (s.occs.length ? ' · ' + s.occs[0] + (s.occs.length > 1 ? ' +' + (s.occs.length - 1) : '') : ''),
+    paletteName: pal[0].toUpperCase(), paletteHint: s.useBrand ? 'From the colours you picked' : 'Suggested for ' + (s.occs[0] || 'your occasion') + '. Add your brand colours to swap it.',
+    logoInk: kbDark(pal[1][0][0]) ? '#FFFFFF' : '#1E1B1D',
+    c1: s.c1, c2: s.c2, c1Up: String(s.c1).toUpperCase(), c2Up: String(s.c2).toUpperCase(), useBrand: s.useBrand,
+    setC1: (e) => this.setState({ c1: e.target.value, useBrand: true }), setC2: (e) => this.setState({ c2: e.target.value, useBrand: true }),
+    resetColours: () => this.setState({ useBrand: false }), palette: pal[1].map(([hex, name]) => ({ hex, name })),
+    boxLid: pal[1][0][0], boxBase: pal[1][2][0], boxSleeve: pal[1][1][0],
+    packName: pk[0], packNote: pk[1], packShort: pk[2],
+    hasBrandChips: s.brands.length > 0, brandChips: s.brands,
+    kits,
+    work: WORK.map(([id, title, tag, v]) => ({ img: '/_blob/' + id, title, tag, isVideo: v })),
+    opts: OPTS.map(([title, desc, lead, icon]) => ({ title, desc, lead, icon })),
+    boxes: BOXES.map(b => { const d = deal(b.mrp); return { name: b.name, img: b.img, feats: b.feats, mrpFmt: fmt(b.mrp), dealFmt: fmt(d), use: () => { this.setState({ budget: Math.min(25000, Math.max(500, Math.round(d / 500) * 500)), notes: 'Start from the ' + b.name + ' kit (' + b.feats.slice(0, 3).join(', ') + ') and customise it.', step: 'A', done: false }); scrollToBrief(); } }; }),
+    bk: s.bk, bkOpen: !s.bkDone, bkDone: s.bkDone, bkErr: s.bkErr,
+    onBk: { name: (e) => this.setState({ bk: Object.assign({}, s.bk, { name: e.target.value }), bkErr: false }), phone: (e) => this.setState({ bk: Object.assign({}, s.bk, { phone: e.target.value }), bkErr: false }), date: (e) => this.setState({ bk: Object.assign({}, s.bk, { date: e.target.value }), bkErr: false }) },
+    slots: ['11:00 AM', '1:00 PM', '3:00 PM', '5:00 PM'].map(l => { const on = s.bk.slot === l; return { label: l, cls: on ? 'is-on' : '', pressed: on ? 'true' : 'false', pick: () => this.setState({ bk: Object.assign({}, s.bk, { slot: l }) }) }; }),
+    submitBk: () => { const ph = String(s.bk.phone).replace(/\D/g, '').slice(-10); if (!s.bk.name.trim() || ph.length !== 10 || !s.bk.date) { this.setState({ bkErr: true }); return; } this.setState({ bkDone: true, bkErr: false }); },
+    bkSummary: (s.bk.name || 'You') + ' · ' + (s.bk.date ? new Date(s.bk.date + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) : '') + ', ' + s.bk.slot,
+    bkReset: () => this.setState({ bkDone: false, bk: { name: '', phone: '', date: '', slot: '11:00 AM' } }),
+    toVisit: (e) => { try { e.preventDefault(); const el = document.getElementById('visit'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (x) {} },
+    toBrief: (e) => { try { e.preventDefault(); } catch (x) {} scrollToBrief(); }
+  };
+}
+}
+</script>
+</body>
+</html>

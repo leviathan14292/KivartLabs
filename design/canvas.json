@@ -1,0 +1,101 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Bespoke.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "04 · Bespoke Gifting",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 6000,
+      "is_interactive": true,
+      "title": "01 · Home",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Partner.dc.html": {
+      "expand": "fill",
+      "h": 2300,
+      "is_interactive": true,
+      "title": "03 · KataLogKraft (partner PDF builder)",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "ShubhAarambh.dc.html": {
+      "expand": "fill",
+      "h": 3600,
+      "is_interactive": true,
+      "title": "05 · Shubh Aarambh (wedding collection)",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "Shop.dc.html": {
+      "expand": "fill",
+      "h": 8000,
+      "is_interactive": true,
+      "title": "02 · Shop (filters)",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Unboxed.dc.html": {
+      "expand": "fill",
+      "h": 3000,
+      "is_interactive": true,
+      "title": "06 · KivartKlicks (camera roll)",
+      "w": 1440,
+      "x": 7600,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-11-15T21:38:42Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "t1",
+    "note-51escg"
+  ],
+  "notes": {
+    "note-51escg": {
+      "bold": false,
+      "kind": "title1",
+      "size": 24,
+      "text": "",
+      "w": 240,
+      "x": 221,
+      "y": -663
+    },
+    "t1": {
+      "kind": "title1",
+      "maxW": 6000,
+      "text": "Kivart — B2B gifting website redesign",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Shop.dc.html",
+    "Partner.dc.html",
+    "Bespoke.dc.html",
+    "ShubhAarambh.dc.html",
+    "Unboxed.dc.html"
+  ],
+  "pages": [],
+  "title": "Kivart Labs — Website Redesign"
+}
