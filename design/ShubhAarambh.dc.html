@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kivart — Shubh Aarambh Wedding Collection</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Marcellus&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#1E1B1D}a:hover{color:#C22B54}
+@media (max-width:1024px){.kv-prod{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media (max-width:820px){.kv-prod{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:600px){h1{font-size:34px!important;line-height:1.1!important}h2{font-size:24px!important}.kv-pad{padding:24px 20px!important}}
+.kv-burger{display:inline-flex!important;order:3}.kv-mnav{display:flex!important}
+.kv-hdr{flex-wrap:nowrap!important}.kv-cta{order:2;margin-left:auto}
+@media (min-width:901px){.kv-mnav{left:auto!important;width:340px;right:max(24px, calc((100% - 1280px) / 2 + 24px))!important;border-radius:0 0 20px 20px;border-left:1px solid #EBD5DB;border-right:1px solid #EBD5DB}.kv-mcta{display:none!important}}
+@media (max-width:900px){.kv-cta{display:none!important}.kv-burger{margin-left:auto}.kv-hdr{padding:10px 16px!important}}
+@media (max-width:600px){.kv-tag{display:none!important}}
+.kv-mnav{position:absolute;top:100%;left:0;right:0;z-index:40;visibility:hidden;clip-path:inset(0 0 100% 0);transition:clip-path .55s cubic-bezier(.4,0,.2,1) .3s,visibility 0s linear .85s}
+.kv-mnav.is-open{visibility:visible;clip-path:inset(0 0 -40px 0);transition:clip-path .6s cubic-bezier(.4,0,.2,1),visibility 0s}
+.kv-mnav>*{opacity:0;transform:translateY(-12px);transition:opacity .35s ease,transform .35s ease}
+.kv-mnav.is-open>*{opacity:1;transform:none}
+@media (max-width:600px){[style*="border-radius: 999px"][style*="padding: 14px"],[style*="border-radius: 999px"][style*="padding: 13px"],[style*="border-radius: 999px"][style*="padding: 12px 2"],[style*="border-radius: 999px"][style*="padding: 11px"],button[style*="min-height: 48px"],button[style*="min-height: 52px"]{font-size:14px!important;padding:10px 18px!important;min-height:42px!important}}
+.kv-mnav.is-open>:nth-child(1){transition-delay:.12s}.kv-mnav.is-open>:nth-child(2){transition-delay:.2s}.kv-mnav.is-open>:nth-child(3){transition-delay:.28s}.kv-mnav.is-open>:nth-child(4){transition-delay:.36s}.kv-mnav.is-open>:nth-child(5){transition-delay:.44s}.kv-mnav.is-open>:nth-child(6){transition-delay:.52s}
+.kv-mnav>:nth-child(6){transition-delay:0s}.kv-mnav>:nth-child(5){transition-delay:.05s}.kv-mnav>:nth-child(4){transition-delay:.1s}.kv-mnav>:nth-child(3){transition-delay:.15s}.kv-mnav>:nth-child(2){transition-delay:.2s}.kv-mnav>:nth-child(1){transition-delay:.25s}
+@media (prefers-reduced-motion: reduce){.kv-mnav,.kv-mnav>*{transition:none!important}}
+</style>
+</helmet>
+<div style="font-family: Poppins, system-ui, sans-serif; color: #FBE9C6; background: #8E2F3B; min-height: 100vh">
+
+<header style="background: #FFFFFF; border-bottom: 1px solid #EBD5DB; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 12px rgba(30,27,29,0.06); color: #1E1B1D">
+<div class="kv-hdr" style="max-width: 1280px; margin: 0 auto; padding: 14px 24px; display: flex; gap: 16px; align-items: center">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none"><img src="/_blob/a83bf40e44e99b4dbe7762f8dff58a41" alt="Kivart" style="height: 30px; width: auto"><span class="kv-tag" style="font-size: 11px; letter-spacing: 0.22em; color: #6B5A60; font-weight: 500; border-left: 1px solid #EBD5DB; padding-left: 12px">CORPORATE &amp; WEDDING GIFTING</span></a>
+<a class="kv-cta" href="Bespoke.dc.html" style="background: #C22B54; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 999px; font-size: 15px; white-space: nowrap">Enquiry list ({{count}})</a>
+<button type="button" class="kv-burger" onClick="{{toggleMenu}}" aria-label="{{menuLabel}}" aria-expanded="{{menuOpen}}" style="font: inherit; width: 44px; height: 44px; border-radius: 12px; border: 1px solid #EBD5DB; background: #FFFFFF; color: #1E1B1D; cursor: pointer; align-items: center; justify-content: center; padding: 0">
+<sc-if value="{{menuShut}}" hint-placeholder-val="{{true}}"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="#1E1B1D" stroke-width="2" stroke-linecap="round" fill="none"></path></svg></sc-if>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="#C22B54" stroke-width="2" stroke-linecap="round" fill="none"></path></svg></sc-if>
+</button>
+</div>
+<nav class="kv-mnav {{menuCls}}" aria-label="Main menu" style="flex-direction: column; border-top: 1px solid #EBD5DB; border-bottom: 1px solid #EBD5DB; padding: 8px 16px 18px; font-size: 16px; font-weight: 500; background: #FFFFFF; box-shadow: 0 18px 30px rgba(30,27,29,0.14)">
+<a href="Shop.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">Shop</a>
+<a href="ShubhAarambh.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #C22B54; font-weight: 600">Shubh Aarambh</a>
+<a href="Bespoke.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">Bespoke Gifting</a>
+<a href="Partner.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">KataLogKraft</a>
+<a href="Unboxed.dc.html" style="text-decoration: none; border-bottom: 1px solid #F1E3E7; padding: 14px 4px; color: #1E1B1D">KivartKlicks</a>
+<a class="kv-mcta" href="Bespoke.dc.html" style="margin-top: 14px; background: #C22B54; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 14px 20px; border-radius: 999px; text-align: center">Enquiry list ({{count}})</a>
+</nav>
+</header>
+
+<section style="position: relative">
+<img src="/_blob/ba15319ebcee15059ee811f177b2ce8e" alt="Shubh Aarambh Collection artwork with elephants, lotus and peacocks" style="width: 100%; height: 420px; object-fit: cover; display: block">
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 40px 24px 0; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<span style="align-self: flex-start; background: #F5C518; color: #5E1029; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; padding: 6px 14px; border-radius: 999px">WEDDING GIFTING · 2026 COLLECTION</span>
+<h1 style="margin: 0; font-family: Marcellus, Georgia, serif; font-size: 56px; line-height: 1.02; font-weight: 400; color: #F5C518">Shubh Aarambh</h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; font-weight: 300; max-width: 640px">Heirloom gifting for every wedding ritual, from the first invite to the last thank-you. Silver keepsakes, handcrafted décor, mithai and hampers, curated, branded and delivered by one team.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Bespoke.dc.html" style="background: #F5C518; color: #5E1029; text-decoration: none; font-weight: 700; padding: 14px 24px; border-radius: 999px">Plan your wedding gifting</a>
+<a href="Main.dc.html" style="color: #FBE9C6; text-decoration: none; font-weight: 600; padding: 14px 24px; border-radius: 999px; border: 1.5px solid #FBE9C6">Book an Experience Zone visit</a>
+</div>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 32px 24px 0">
+<div style="display: flex; flex-wrap: wrap; gap: 8px" role="group" aria-label="Filter by ritual">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="7">
+<sc-if value="{{t.active}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{t.pick}}" aria-pressed="true" style="font: inherit; font-size: 14px; font-weight: 600; padding: 9px 16px; min-height: 42px; border-radius: 999px; border: 1.5px solid #F5C518; background: #F5C518; color: #5E1029; cursor: pointer">{{t.label}}</button></sc-if>
+<sc-if value="{{t.idle}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{t.pick}}" aria-pressed="false" style="font: inherit; font-size: 14px; padding: 9px 16px; min-height: 42px; border-radius: 999px; border: 1px solid #D9A441; background: none; color: #FBE9C6; cursor: pointer">{{t.label}}</button></sc-if>
+</sc-for>
+</div>
+<p style="margin: 14px 0 0; font-size: 14px; color: #EBC9B0">{{summary}}</p>
+</section>
+
+<section style="max-width: 1280px; margin: 0 auto; padding: 20px 24px 72px">
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div class="kv-pad" style="border: 1.5px dashed #D9A441; border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+<span style="font-family: Marcellus, Georgia, serif; font-size: 26px; color: #F5C518">{{emptyTitle}}</span>
+<span style="font-size: 15px; line-height: 1.6; font-weight: 300; max-width: 620px">We curate these to your guest list, budget and region. Share your brief and we'll send options within 48 hours.</span>
+<a href="Bespoke.dc.html" style="background: #F5C518; color: #5E1029; text-decoration: none; font-weight: 700; padding: 12px 22px; border-radius: 999px">Share your brief</a>
+</div>
+</sc-if>
+<div class="kv-prod" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<sc-for list="{{items}}" as="p" hint-placeholder-count="8">
+<div style="background: #7A2532; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<img src="{{p.img}}" alt="{{p.name}}" style="width: 100%; aspect-ratio: 520 / 538; object-fit: cover; display: block">
+<div style="padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1">
+<span style="font-size: 11px; letter-spacing: 0.12em; color: #EBC9B0">{{p.ritualUpper}}</span>
+<span style="font-family: Marcellus, Georgia, serif; font-size: 21px; line-height: 1.15; color: #F5C518">{{p.name}}</span>
+<span style="font-size: 13px; line-height: 1.55; font-weight: 300">{{p.blurb}}</span>
+<span style="font-size: 12px; line-height: 1.5; color: #EBC9B0">Inside: {{p.inside}}</span>
+<div style="margin-top: auto; padding-top: 10px">
+<sc-if value="{{p.inList}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{p.toggle}}" style="font: inherit; width: 100%; min-height: 44px; border-radius: 999px; border: 1.5px solid #F5C518; background: #F5C518; color: #5E1029; font-weight: 700; cursor: pointer">✓ In enquiry list</button></sc-if>
+<sc-if value="{{p.notInList}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{p.toggle}}" style="font: inherit; width: 100%; min-height: 44px; border-radius: 999px; border: 1.5px solid #F5C518; background: none; color: #F5C518; font-weight: 600; cursor: pointer">Add to enquiry</button></sc-if>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<footer style="background: #5E1029; color: #EBC9B0; font-size: 14px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 36px 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between">
+<span>Shubh Aarambh by Kivart · Plot 10, Sector 23, Block C1, Rohini, Delhi 110042</span>
+<span style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap"><a href="tel:+919209700003" style="color: #F5C518">+91 92097 00003</a> <a href="mailto:connect@kivartlabs.com" style="color: #F5C518">connect@kivartlabs.com</a>
+<span style="display: flex; gap: 8px">
+<a href="https://www.instagram.com/kivartlabs" target="_blank" rel="noopener" aria-label="Kivart on Instagram" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid #8E2F3B; color: #FBE9C6; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"></circle></svg></a>
+<a href="https://www.facebook.com/kivartlabs/" target="_blank" rel="noopener" aria-label="Kivart on Facebook" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid #8E2F3B; color: #FBE9C6; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v3.5H8V21h3.5v-7.5h3l.6-3.5h-3.6V7.8c0-.5.4-.8.8-.8H15z"></path></svg></a>
+<a href="https://www.youtube.com/@kivartlabs" target="_blank" rel="noopener" aria-label="Kivart on YouTube" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid #8E2F3B; color: #FBE9C6; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="4"></rect><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"></path></svg></a>
+<a href="https://www.linkedin.com/company/kivartlabs/" target="_blank" rel="noopener" aria-label="Kivart on LinkedIn" style="width: 40px; height: 40px; border-radius: 999px; border: 1px solid #8E2F3B; color: #FBE9C6; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-6M11.5 13a2.5 2.5 0 0 1 5 0v3.5"></path></svg></a>
+</span></span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+const B = '/_blob/';
+const GIFTS = [
+{ id: 'divine-union', name: 'Divine Union', ritual: 'First Invites', img: B + 'fba504aa522e81fb74fb007e054db621', blurb: 'An heirloom silver frame that holds your wedding invitation, flanked by bride and groom figurines, elephants and Lord Ganesha.', inside: 'Silver invitation frame on a wooden base' },
+{ id: 'royal-affair', name: 'The Royal Affair', ritual: 'Return Favours', img: B + '8cfe2af752c900fbfec80f9ae74140ca', blurb: 'A silver set for welcoming the families, paired with rich dry fruits and Indian sweets.', inside: 'Silver thali, bell, spoon, agarbatti stand, 2 bowls' },
+{ id: 'heritage-blessings', name: 'Heritage Blessings', ritual: 'Return Favours', img: B + '6a8dc2c2a1a234e740e6090d9a4b2b62', blurb: 'A silver gift set for grand weddings, housewarmings and auspicious occasions.', inside: 'Carved silver thali, 2 bowls, spoon, Lakshmi and Ganesh idols' },
+{ id: 'guardians', name: 'Guardians of Prosperity', ritual: 'Return Favours', img: B + '2cef22e16bf523e3799e1330018ae4a1', blurb: 'Handcrafted elephants that stand for prosperity, wisdom and abundance.', inside: 'Elephant trio, heritage story card, emerald satin box' },
+{ id: 'treasure', name: 'Treasure of Happiness', ritual: 'Return Favours', img: B + 'b90261b3ecddad111f617cef107f5db8', blurb: 'Traditional mithai and dry fruits in festive packaging.', inside: 'California almonds, gulab gur shakkar, chana burfi, golden tin, potli bag' },
+{ id: 'aabhar', name: 'Aabhar – The Gift of Tradition', ritual: 'Return Favours', img: B + 'f403f3549fcfb98150c10591366fd618', blurb: 'Decorative keepsakes inspired by India\'s artistic heritage.', inside: 'Hariba sweets, 2 dry fruit boxes, Jaipur candle, presentation box' },
+{ id: 'festive-serenity', name: 'Festive Serenity Hamper', ritual: 'Return Favours', img: B + '3a50d00b52940016cb4de44f9d791da8', blurb: 'A calm, earthy hamper with handcrafted décor and wholesome treats.', inside: 'Farmley date bites, clay trinket tray, incense set, plantable seeds' },
+{ id: 'divine-blessings', name: 'Divine Blessings', ritual: 'Return Favours', img: B + 'ba3e3b4a68caefb737cf2134d0d4b7c1', blurb: 'Modern Kivart tech meets traditional décor and festive sweets.', inside: 'Kivart Vibe+ speaker, 3-in-1 wireless charger, golden diya, décor piece, sweets' },
+{ id: 'regal-luxe', name: 'The Regal Luxe', ritual: 'Return Favours', img: B + 'fd6e2632043ece9c6fbe50dd4fb1ce47', blurb: 'Hand-painted elephant figurines with pearl detailing and dry fruits.', inside: 'Pearl elephant figurine, 2 gold-toned dry fruit containers, 2 hand-painted elephants' },
+{ id: 'virasat', name: 'Virasat', ritual: 'Return Favours', img: B + '1629f0a051e29a8305530abae86ed845', blurb: 'Celebrating the artisans who keep India\'s heritage alive.', inside: 'Decorated traditional thali, 4 golden diyas, leatherette box' },
+{ id: 'hariyali', name: 'Hariyali', ritual: 'Return Favours', img: B + '5f82fea7187b44b4ce52b854ccef7d0a', blurb: 'A nature-inspired hamper of natural skincare and sustainable treasures.', inside: 'Kokum body butter, 3 body balms, sandalwood dhoop, date bites, playing cards, terracotta tray, face cleanser' },
+{ id: 'prakriti', name: 'Prakriti', ritual: 'Return Favours', img: B + '028cd94787f181fde2508128f18a39a2', blurb: 'A Kheoni natural skincare hamper for everyday self-care.', inside: 'Body wash, eye mask, coconut candle, rose water spray, face pack, face cream' },
+{ id: 'chronicles', name: 'Chronicles of Heritage', ritual: 'Return Favours', img: B + 'fb904bf7cc25a59de30741c3a2df94fb', blurb: 'Engraved silver keepsakes rooted in symbolism and craftsmanship.', inside: 'Engraved silver elephant, silver photo frame, silver candle holder' },
+{ id: 'gold-cutlery', name: 'Gold Finish Cutlery Set', ritual: 'Return Favours', img: B + '2d14837790c0335fcc14aa344467fcf7', blurb: 'Handcrafted gold-tone cutlery for sharing meals with family and guests.', inside: '24 pieces: forks, butter knives, teaspoons, tablespoons' },
+{ id: 'golden-grace', name: 'The Glow of Golden Grace', ritual: 'Return Favours', img: B + '851915d47cd6c68a15bfd9b55db63c3f', blurb: 'A peach-toned diya and candle stand with elephant dry fruit boxes.', inside: 'Candle / diya stand, 2 elephant-shaped dry fruit boxes' },
+{ id: 'royal-indulgence', name: 'The Royal Indulgence', ritual: 'Return Favours', img: B + '109669f7584889866618c5105c996240', blurb: 'Silver-toned platters and golden accents in a keepsake box.', inside: '3 silver-toned platters, 2 dry fruit boxes, 2 pumpkin seed boxes' },
+{ id: 'roshan', name: 'Roshan Parampara', ritual: 'Return Favours', img: B + 'b3dde0bb47a7c56384cf9b274fe1299d', blurb: 'Hammered copper craftsmanship with everyday utility.', inside: 'Copper water dispenser with tap, peacock copper bottle' },
+{ id: 'royal-crest', name: 'The Royal Crest', ritual: 'Return Favours', img: B + '41e4cf9e3857c60f1be64e3223e82bb4', blurb: 'A luxurious cutlery collection for the newlyweds\' new home.', inside: '90-piece cutlery set, navy-blue presentation box' }
+];
+const RITUALS = ['All gifts', 'First Invites', 'Return Favours', 'Fruit Baskets', 'Assorted Mithai', 'Kanjivaram Sarees'];
+const slug = (r) => r.toLowerCase().replace(/[^a-z]+/g, '-');
+const tabFromHash = () => { try { const h = (window.location.hash || '').slice(1); return RITUALS.find(r => slug(r) === h) || 'All gifts'; } catch (e) { return 'All gifts'; } };
+function menuVals(self) { const m = !!self.state.menu; return { menuOpen: m, menuShut: !m, menuCls: m ? 'is-open' : '', menuLabel: m ? 'Close menu' : 'Open menu', toggleMenu: () => self.setState({ menu: !m }) }; }
+class Component extends DCLogic {
+constructor(p){ super(p); this.state = { tab: tabFromHash(), list: [] }; }
+renderVals() {
+const s = this.state;
+const shown = GIFTS.filter(g => s.tab === 'All gifts' || g.ritual === s.tab);
+const items = shown.map(g => { const inList = s.list.includes(g.id); return Object.assign({}, g, { ritualUpper: g.ritual.toUpperCase(), inList, notInList: !inList, toggle: () => this.setState({ list: inList ? s.list.filter(x => x !== g.id) : s.list.concat([g.id]) }) }); });
+const empty = items.length === 0;
+return {
+...menuVals(this),
+tabs: RITUALS.map(r => ({ label: r, active: s.tab === r, idle: s.tab !== r, pick: () => this.setState({ tab: r }) })),
+items, empty, count: s.list.length,
+emptyTitle: s.tab + ', curated on request',
+summary: empty ? '' : (s.tab === 'All gifts' ? GIFTS.length + ' gifts across First Invites and Return Favours. Prices on request.' : items.length + (items.length === 1 ? ' gift' : ' gifts') + ' for ' + s.tab + '.')
+};
+}
+}
+</script>
+</body>
+</html>
